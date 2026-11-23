@@ -1,8 +1,10 @@
+
 package tn.esprit.autoloc.RestController;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.Entities.Reservation;
+import tn.esprit.autoloc.DTO.ReservationResponseDTO;
 import tn.esprit.autoloc.Service.IReservation;
 
 import java.util.HashSet;
@@ -13,7 +15,9 @@ import java.util.Set;
 @RequestMapping("/api/reservation")
 @RequiredArgsConstructor
 public class ReservationController {
+
     private final IReservation iReservation;
+
 
     @PostMapping("/addReservation")
     public Reservation addReservation(@RequestBody Reservation a) {
@@ -41,5 +45,15 @@ public class ReservationController {
     }
 
 
+    @GetMapping("/dto")
+    public List<ReservationResponseDTO> getReservationsDTO() {
+        return iReservation.recupererReservationsDTO();
+    }
 
+    @GetMapping("/dto/client/{idClient}")
+    public List<ReservationResponseDTO> getReservationsClient(
+            @PathVariable Long idClient) {
+
+        return iReservation.recupererReservationsClient(idClient);
+    }
 }

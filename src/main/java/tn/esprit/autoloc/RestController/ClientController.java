@@ -1,7 +1,10 @@
 package tn.esprit.autoloc.RestController;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.autoloc.DTO.ClientRequestDTO;
+import tn.esprit.autoloc.DTO.ClientResponseDTO;
 import tn.esprit.autoloc.Entities.Client;
 import tn.esprit.autoloc.Service.IClient;
 
@@ -36,8 +39,12 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public Client getClient(@PathVariable Long id) {
-        return iClient.recupererClientByid(id);
+    public ClientResponseDTO getClient(@PathVariable Long id) {
+        return iClient.recupererClientdto(id);
     }
 
+    @PostMapping("/addClientDTO")
+    public ClientResponseDTO ajouterClientdto(@Valid @RequestBody ClientRequestDTO dto) {
+        return iClient.ajouterClientdto(dto);
+    }
 }
