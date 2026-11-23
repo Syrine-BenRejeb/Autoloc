@@ -1,4 +1,4 @@
-package tn.esprit.autoloc.RestController;
+package tn.esprit.autoloc.restcontroller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +40,19 @@ public class EmployeController {
         return iEmploye.recupererEmployeByid(id);
     }
 
+    @PutMapping
+    public Employe miseajourEmploye(@RequestBody Employe a) {
+        return iEmploye.updateEmploye(a);
+    }
 
+    @PutMapping("/affecter/{idEmploye}/{idAgence}")
+    public Employe affecterEmploye(@PathVariable Long idEmploye,
+                                   @PathVariable Long idAgence) {
+        return iEmploye.affecterEmploye(idEmploye, idAgence);
+    }
+
+    @PutMapping("/desaffecter/{idEmploye}")
+    public Employe desaffecterEmploye(@PathVariable Long idEmploye) {
+        return iEmploye.desaffecterEmploye(idEmploye);
+    }
 }

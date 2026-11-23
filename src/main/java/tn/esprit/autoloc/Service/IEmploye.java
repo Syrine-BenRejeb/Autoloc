@@ -11,4 +11,7 @@ public interface IEmploye {
     List<Employe> recupererEmployes();
     Set<Employe> findEmployes();
     Employe recupererEmployeByid(long idEmploye);
+    Employe updateEmploye(Employe em);
+    public Employe desaffecterEmploye(Long idEmploye);
+    public Employe affecterEmploye(Long idEmploye, Long idAgence);
 }

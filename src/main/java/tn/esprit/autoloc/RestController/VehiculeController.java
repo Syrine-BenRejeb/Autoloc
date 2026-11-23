@@ -1,4 +1,4 @@
-package tn.esprit.autoloc.RestController;
+package tn.esprit.autoloc.restcontroller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +40,26 @@ public class VehiculeController {
         return iVehicule.recupererVehiculeByid(id);
     }
 
+    @PutMapping
+    public Vehicule miseajourVehicule(@RequestBody Vehicule a) {
+        return iVehicule.updateVehicule(a);
+    }
 
+    @PutMapping("/affecter/{idVehicule}/{idAgence}")
+    public Vehicule affecterVehicule(@PathVariable Long idVehicule,
+                                     @PathVariable Long idAgence) {
+        return iVehicule.affecterVehicule(idVehicule, idAgence);
+    }
 
+    @PutMapping("/affecterEquipement/{idVehicule}/{idEquipement}")
+    public Vehicule affecterEquipement(@PathVariable Long idVehicule,
+                                       @PathVariable Long idEquipement) {
+        return iVehicule.affecterEquipement(idVehicule, idEquipement);
+    }
+
+    @PutMapping("/desaffecterEquipement/{idVehicule}/{idEquipement}")
+    public Vehicule desaffecterEquipement(@PathVariable Long idVehicule,
+                                          @PathVariable Long idEquipement) {
+        return iVehicule.desaffecterEquipement(idVehicule, idEquipement);
+    }
 }

@@ -11,4 +11,8 @@ public interface IVehicule {
     List<Vehicule> recupererVehicules();
     Set<Vehicule> findVehicules();
     Vehicule recupererVehiculeByid(long idVehicule);
+    Vehicule updateVehicule(Vehicule ve);
+    Vehicule affecterVehicule(Long idVehicule, Long idAgence);
+    Vehicule affecterEquipement(Long idVehicule, Long idEquipement);
+    Vehicule desaffecterEquipement(Long idVehicule, Long idEquipement);
 }
